@@ -2,7 +2,7 @@
 
 #内置Tomcat容器配置
 server:
-  port: 8888
+  port: 8409
 #基础配置
 spring:
   profiles:
@@ -44,9 +44,9 @@ spring:
   profiles: prod
   #数据库配置
   datasource:
-    url: jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8&characterEncoding=utf-8
+    url: jdbc:mysql://118.31.53.34:3306/test?serverTimezone=GMT%2B8&characterEncoding=utf-8
     username: root
-    password: 123456
+    password: ea8b0c9f4341e833
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 #是否需要输入验证码
