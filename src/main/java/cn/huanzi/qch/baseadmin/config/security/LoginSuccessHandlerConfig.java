@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.Authentication;
@@ -104,6 +105,18 @@ public class LoginSuccessHandlerConfig implements AuthenticationSuccessHandler {
         }
 
         //判断api加密开关是否开启
+        msg = getString(httpServletRequest, msg, log);
+
+        //转json字符串并转成Object对象，设置到Result中并赋值给返回值o
+        httpServletResponse.setCharacterEncoding("UTF-8");
+        httpServletResponse.setContentType("application/json; charset=utf-8");
+        PrintWriter out = httpServletResponse.getWriter();
+        out.print(msg);
+        out.flush();
+        out.close();
+    }
+
+    static String getString(HttpServletRequest httpServletRequest, String msg, Logger log) {
         if("Y".equals(SysSettingUtil.getSysSetting().getSysApiEncrypt())) {
             //加密
             try {
@@ -132,14 +145,7 @@ public class LoginSuccessHandlerConfig implements AuthenticationSuccessHandler {
                 log.error(ErrorUtil.errorInfoToString(e));
             }
         }
-
-        //转json字符串并转成Object对象，设置到Result中并赋值给返回值o
-        httpServletResponse.setCharacterEncoding("UTF-8");
-        httpServletResponse.setContentType("application/json; charset=utf-8");
-        PrintWriter out = httpServletResponse.getWriter();
-        out.print(msg);
-        out.flush();
-        out.close();
+        return msg;
     }
 
     @Bean

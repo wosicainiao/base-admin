@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -37,12 +39,16 @@ import java.util.List;
 
 @EnableAsync//开启异步调用
 @SpringBootApplication
-public class BaseAdminApplication {
+public class BaseAdminApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(BaseAdminApplication.class, args);
     }
-
+//    @Override//为了打包springboot项目
+//    protected SpringApplicationBuilder configure(
+//            SpringApplicationBuilder builder) {
+//        return builder.sources(this.getClass());
+//    }
     /**
      * 解决不能注入session注册表问题
      */

@@ -28,7 +28,7 @@ captcha:
 ---
 ##### dev 配置 #######
 spring:
-  profiles: dev
+  profiles: prod
   #数据库配置
   datasource:
     url: jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8&characterEncoding=utf-8
@@ -41,7 +41,7 @@ captcha:
 ---
 ##### prod 配置 #######
 spring:
-  profiles: prod
+  profiles: dev
   #数据库配置
   datasource:
     url: jdbc:mysql://118.31.53.34:3306/test?serverTimezone=GMT%2B8&characterEncoding=utf-8

@@ -127,9 +127,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <mainClass>cn.huanzi.qch.baseadmin.BaseAdminApplication</mainClass>
                     <finalName>${project.artifactId}</finalName>
                     <outputDirectory>../package</outputDirectory>
                 </configuration>
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>repackage</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
             </plugin>
             <!-- 跳过启动测试 -->
             <plugin>
